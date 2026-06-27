@@ -38,21 +38,54 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; background: var(--parchment); color: var(--carbon); overflow-x: hidden; }
 
-    /* ── ANNOUNCEMENT BAR ── */
-    .announcement-bar {
-      background: var(--bordeaux); color: var(--white);
-      padding: 10px 24px; font-size: 0.68rem; letter-spacing: 0.07em; font-weight: 500;
-      display: flex; align-items: center; justify-content: center; gap: 16px;
+    /* ── LAUNCHING SOON BANNER ── */
+    .launch-banner {
+      background: var(--carbon);
+      color: var(--parchment);
+      padding: 36px 24px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--bordeaux);
     }
-    .bar-cta {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: rgba(255,255,255,0.15); color: var(--white); text-decoration: none;
-      padding: 4px 12px; border-radius: 2px; font-size: 0.63rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,0.3); transition: background 0.18s; white-space: nowrap;
+    .launch-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(112,19,33,0.4) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 50%, rgba(184,154,90,0.12) 0%, transparent 50%);
+      pointer-events: none;
     }
-    .bar-cta:hover { background: rgba(255,255,255,0.25); }
-    .bar-cta::after { content: '→'; margin-left: 2px; }
+    .launch-banner-inner {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .launch-banner-eyebrow {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .launch-banner-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      color: var(--parchment);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .launch-banner-text {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: rgba(241,234,222,0.65);
+      max-width: 520px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
 
     /* ── HEADER ── */
     header {
@@ -482,10 +515,13 @@
 </head>
 <body>
 
-<!-- ── ANNOUNCEMENT BAR ── -->
-<div class="announcement-bar">
-  <span>✦ 3 Amsterdam walking routes now live</span>
-  <a href="https://app.anotherwalk.city" class="bar-cta">Open the app</a>
+<!-- ── LAUNCHING SOON BANNER ── -->
+<div class="launch-banner">
+  <div class="launch-banner-inner">
+    <div class="launch-banner-eyebrow">✦ Coming soon</div>
+    <div class="launch-banner-title">Launching soon</div>
+    <div class="launch-banner-text">AnotherWalk is in the final weeks of preparation. The app and routes are nearly ready — we're polishing the last details before opening to the public.</div>
+  </div>
 </div>
 
 <!-- ── HEADER ── -->
@@ -518,7 +554,6 @@
       <a href="#routes">Routes</a>
       <a href="#reviews">Reviews</a>
     </div>
-    <a href="https://app.anotherwalk.city" class="nav-cta">Open app</a>
   </nav>
 </header>
 
